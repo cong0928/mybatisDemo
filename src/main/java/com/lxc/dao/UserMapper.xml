@@ -5,7 +5,33 @@
 
 <mapper namespace="com.lxc.dao.UserMapper">
 
+
+
     <select id="selectUser" resultType="com.lxc.pojo.User">
         select * from user
     </select>
+
+
+    <insert id="insertUser" parameterType="com.lxc.pojo.User">
+        insert into user (
+                          id, name, pwd
+        )
+        values (
+            #{id,jdbcType=BIGINT},#{name,jdbcType=VARCHAR},#{pwd,jdbcType=VARCHAR}
+        )
+    </insert>
+
+
+    <update id="updateUser" parameterType="com.lxc.pojo.User">
+        update user
+        set name = #{name,jdbcType=VARCHAR},
+            pwd = #{pwd,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <delete id="deleteUser" parameterType="_int">
+        delete from user
+        where id = #{id}
+    </delete>
+
 </mapper>

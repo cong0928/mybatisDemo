@@ -21,4 +21,35 @@ public class TestUser {
 
         sqlSession.close();
     }
+
+
+    @Test
+    public void TestUser2() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        mapper.insertUser(new User(8,"ggg","456456"));
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+    @Test
+    public void updateUser() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        mapper.updateUser(new User(4,"ddd0","456789"));
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+
+    @Test
+    public void deleteUser() {
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        mapper.deleteUser(8);
+        sqlSession.commit();
+        sqlSession.close();
+
+    }
 }

@@ -5,5 +5,13 @@ import com.lxc.pojo.User;
 import java.util.List;
 
 public interface UserMapper {
-    public List<User> selectUser();
+    List<User> selectUser();
+
+    void insertUser(User user);
+
+    void updateUser(User user);
+
+    void deleteUser(int id);
+
+
 }
